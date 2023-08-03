@@ -1,0 +1,27 @@
+class Solution {
+public:
+    void f(int index,vector<string> &keypad ,vector<string> &ans , string temp,string &digits){
+        if(index==digits.length()){
+            ans.push_back(temp);
+            return;
+        }
+
+        string value=keypad[digits[index]-'0'];
+        for(int i=0;i<value.length();i++){
+            temp.push_back(value[i]);
+            f(index+1,keypad,ans,temp,digits);
+            temp.pop_back();
+        }
+    }
+    vector<string> letterCombinations(string digits) {
+        int n=digits.length();
+        if(n==0){
+            return {};
+        }
+        vector<string>keypad={"","","abc","def","ghi","jkl","mno","pqrs","tuv","wxyz"};
+        vector<string>ans;
+        string temp;
+        f(0,keypad,ans,temp,digits);
+        return ans;
+    }
+};
