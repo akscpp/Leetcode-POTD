@@ -1,0 +1,26 @@
+class Solution {
+public:
+    int f(int ind,string &s,unordered_set<string>S,vector<int> &dp) {
+        if(ind==s.size()){
+            return 1;
+        }
+        if(dp[ind]!=-1){
+            return dp[ind];
+        }
+        string temp;
+        for(int j=ind;j<s.size();j++){
+            temp+=s[j];
+            if(S.find(temp)!=S.end()){
+                if(f(j+1,s,S,dp)) return dp[ind]=1;
+            }
+        }
+        return dp[ind]=0;
+    }
+
+    bool wordBreak(string s, vector<string> &wordDict) {
+       
+        unordered_set<string>S(wordDict.begin(),wordDict.end());
+        vector<int>dp(301,-1);
+        return f(0, s,S,dp);
+    }
+};
