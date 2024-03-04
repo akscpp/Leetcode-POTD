@@ -9,7 +9,6 @@ Return the maximum possible score you can achieve after playing any number of to
  
 
 Example 1:
-
 Input: tokens = [100], power = 50
 
 Output: 0
