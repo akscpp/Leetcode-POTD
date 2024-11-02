@@ -6,6 +6,7 @@ public:
             mini=min(mini,a[i]);
             profit=max(profit,a[i]-mini);
         }
+
        return profit;
     } 
        
